@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Package Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="/css/style.bundle.css">
+    <script src="/custom/formrepeater/formrepeater.bundle.js"></script>
+    <script src="/js/form_repeater.js"></script>
+    <style>
+        body {
+            background-image: url('/images/warehouse.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+    </style>
+    <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form th:action="@{/shipment/customer/add-packages/save?trackingNumber=__${trackingNumber}__}"
+                  method="post"
+                  modelAttribute="packageReqDtos"
+                  th:object="${packageReqDtos}"
+                  class="needs-validation" novalidate>
+                <div class="card shadow-sm " style="background-color: rgba(40,57,101,.9)">
+                    <div class="card-header" style="color: wheat">
+                        <h3 class="card-title">Package Form</h3>
+                    </div>
+                    <div class="card-body card-scroll h-500px" style="overflow-y: scroll; height: 500px;">
+                        <h2 class="card-title" style="margin: 5px 20%; color: #79EF96">You can add maximum 5
+                            packages!</h2>
+                        <div th:each="packageReqDto, iterStat : ${packageReqDtos}">
+                            <div class="form-group" style=" margin-top: 20px;">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        <label class="form-label" style="color: #efe7e5">Content:</label>
+                                        <label for="content"></label><input type="text" id="content" name="content"
+                                                                            th:name="|packageReqDtos[${iterStat.index}].content|"
+                                                                            th:placeholder="Content"
+                                                                            class="form-control" required/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label" style="color: #efe7e5">Weight:</label>
+                                        <label for="weight"></label><input type="number" id="weight" name="weight"
+                                                                           th:name="|packageReqDtos[${iterStat.index}].weight|"
+                                                                           th:placeholder="Weight"
+                                                                           class="form-control" required/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label" style="color: #efe7e5">Value:</label>
+                                        <label for="value"></label><input type="number" id="value" name="value"
+                                                                          th:name="|packageReqDtos[${iterStat.index}].value|"
+                                                                          th:placeholder="Value"
+                                                                          class="form-control" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

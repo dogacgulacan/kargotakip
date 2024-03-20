@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title>Paket Ekleme Başarılı</title>
+    <style>
+        body {
+            background-image: url('/images/success.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-message  {
+            font-size: 48px !important;
+            color: rgba(27, 213, 171, 0.84) !important; /* Kırmızı renk mesaj */
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="d-flex flex-column align-self-end mb-2" style="margin-top: 6rem; ">
+    <p class="success-message">You have created your shipment successfully</p>
+    <div class="align-self-center" style="max-width: 25rem; margin-bottom: 2rem">
+        <a th:href="@{/path-to-tracking-page}"  style="border-radius: 1rem;" class="btn btn-outline-info shadow-0 justify-content-center px-5 mx-5">Kargo Takip Sayfasına Git</a>
+    </div>
+</div>
+
+</body>
+</html>

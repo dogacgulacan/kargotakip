@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/images/home.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            color: #007785;
+        }
+
+        .container {
+            padding-top: 100px;
+        }
+
+        .card {
+            background-color: rgba(39, 122, 217, 0.8);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Welcome</h1>
+    <p>You Can Track Your Shipment or Create a New One</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-light-primary mb-3">
+                <div class="card-header bg-info">Shipment Tracking</div>
+                <div class="card-body">
+                    <p>Check The Details of Your Shipment</p>
+                    <form id="trackingForm" onsubmit="redirectToTrackingPage(); return false;">
+                        <div class="form-group">
+                            <label for="trackingNumber">Tracking Number</label>
+                            <input type="text" class="form-control" id="trackingNumber" name="trackingNumber"
+                                   placeholder="Enter your tracking number">
+                        </div>
+                        <button type="submit" class="btn btn-info">Track your shipment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" th:onclick="'window.location.href=\'' + @{/shipment/customer/save} + '\''">
+            <div class="card text-white bg-light-primary mb-3">
+                <div class="card-header bg-info">Create Your Shipment</div>
+                <div class="card-body">
+                    <p>Create a new Shipment</p>
+                    <!--/*@thymesVar id="trackingNumber" type=""*/-->
+                    <div class="form-group">
+                        <div class="card-body">
+                            <p>Begin the creation a new shipment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function redirectToTrackingPage() {
+        let trackingNumber = document.getElementById('trackingNumber').value;
+        let baseUrl = '/shipment/customer/tracking/';
+        window.location.href = baseUrl + trackingNumber;
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

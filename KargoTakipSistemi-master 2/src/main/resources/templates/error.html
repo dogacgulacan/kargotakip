@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Hata Sayfası</title>
+    <style>
+        body {
+            background-image: url('/images/error.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 0;
+        }
+        .error-message {
+            font-size: 72px;
+            color: rgba(234, 46, 86, 0.66); /* Kırmızı renk mesaj */
+        }
+    </style>
+</head>
+<body>
+
+<div class="error-message">
+    <p>You can't access this page directly.</p>
+</div>
+
+</body>
+</html>
